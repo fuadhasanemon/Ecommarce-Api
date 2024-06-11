@@ -34,7 +34,7 @@ export const login = asyncHandler(async (req, res) => {
     { email: loginUser.email },
     process.env.ACCESS_TOKEN_SECRET,
     {
-      expiresIn: process.env.ACCESS_TOKEN_EXPIRE_IN,
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRE_IN
     }
   );
 
@@ -43,7 +43,7 @@ export const login = asyncHandler(async (req, res) => {
     { email: loginUser.email },
     process.env.REFRESH_TOKEN_SECRET,
     {
-      expiresIn: process.env.REFRESH_TOKEN_EXPIRE_IN,
+      expiresIn: process.env.REFRESH_TOKEN_EXPIRE_IN
     }
   );
 
@@ -52,19 +52,19 @@ export const login = asyncHandler(async (req, res) => {
     secure: process.env.APP_ENV == "Development" ? false : true,
     sameSite: "strict",
     path: "/",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000
   });
 
   res.status(200).json({
     token,
     user: loginUser,
-    message: "User Login Successful",
+    message: "User Login Successful"
   });
 });
 
 /**
- * @DESC User Login
- * @ROUTE /api/v1/auth/login
+ * @DESC User Logout
+ * @ROUTE /api/v1/auth/logout
  * @method POST
  * @access public
  */
@@ -100,12 +100,12 @@ export const register = asyncHandler(async (req, res) => {
   const user = await User.create({
     name,
     email,
-    password: hashPass,
+    password: hashPass
   });
 
   res.status(200).json({
     user,
-    message: "User Created successful",
+    message: "User register successful"
   });
 });
 
