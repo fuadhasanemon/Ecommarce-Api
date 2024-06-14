@@ -74,7 +74,7 @@ export const logout = asyncHandler(async (req, res) => {
 });
 
 /**
- * @DESC Create new User
+ * @DESC Register new User
  * @ROUTE /api/v1/user
  * @method POST
  * @access public
